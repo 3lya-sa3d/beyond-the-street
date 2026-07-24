@@ -1,138 +1,150 @@
-import Image from 'next/image'
+import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ArrowLeft } from 'lucide-react'
+import {
+  Callout,
+  PageHero,
+  Prose,
+  Section,
+  SectionHeading,
+  StatCard,
+} from '@/components/content'
 
-const sections = [
-  {
-    href: '/background',
-    number: '01',
-    title: 'Background & How It Shows Up',
-    description:
-      'What Indigenous homelessness is, the numbers behind it, and how the discrimination shows up in Canada today.',
-  },
-  {
-    href: '/norms',
-    number: '02',
-    title: 'Norms: Before & After',
-    description:
-      'The old beliefs that blamed individuals, and the new norm that treats housing as a human right.',
-  },
-  {
-    href: '/structures',
-    number: '03',
-    title: 'Social Structures & Values',
-    description:
-      'How the Indian Act, child welfare, and the economy keep this problem going, and whose values our systems follow.',
-  },
-  {
-    href: '/change',
-    number: '04',
-    title: 'Social Change & Institutions',
-    description:
-      'Where change is already happening, where it still needs to happen, and which institutions have to step up.',
-  },
-  {
-    href: '/theory',
-    number: '05',
-    title: 'Theory & My Questions',
-    description:
-      'The social theory that best explains this change, plus the questions I still have about the issue.',
-  },
-]
+export const metadata: Metadata = {
+  title: 'Structures & Values | Beyond the Street',
+  description:
+    'How the Indian Act, the child welfare system, and the economy keep Indigenous housing injustice going, and the clash of values underneath it.',
+}
 
-export default function HomePage() {
+export default function StructuresPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative isolate overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <Image
-            src="/images/trc-huntsville1.jpg"
-            alt="People gather around an Every Child Matters flag and a land acknowledgement stone at a National Day for Truth and Reconciliation event in Huntsville, Ontario."
-            fill
-            priority
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-foreground/65" />
-        </div>
+      <PageHero
+        eyebrow="Section 03"
+        title="Social Structures & Value Systems"
+        intro="Discrimination is not only personal. It is built right into our institutions. Housing injustice keeps going because of how funding, child welfare, and the economy are set up, and whose values those systems follow."
+      />
 
-        <div className="mx-auto flex max-w-5xl flex-col px-5 py-24 md:py-36">
-          <p className="text-sm font-semibold uppercase tracking-widest text-background/80">
-            A Social Justice Project
+      <Section>
+        <SectionHeading>Federal control and funding gaps</SectionHeading>
+        <Prose>
+          <p>
+            Under the <em>Indian Act</em>, the federal government is in charge of
+            housing on reserves. In reality, that has meant years of
+            underfunding and unsafe conditions like overcrowding, mould, and
+            fire risks.
           </p>
-          <h1 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-tight tracking-tight text-background text-balance md:text-6xl">
-            Beyond the Street: Decolonizing Housing Justice for Indigenous
-            Peoples in Canada
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-background/85 text-pretty">
-            Indigenous homelessness is not just bad luck or bad choices. It is
-            the result of colonization, broken systems, and years of unfair
-            policy. This project looks at how that discrimination works, how
-            attitudes are changing, and what still needs to change.
+          <p>
+            When homes are unsafe or missing, people move to cities. There, they
+            often run into racism from landlords in the private rental market.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/background"
-              className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90"
-            >
-              Start with the background
-              <ArrowRight className="size-4" />
-            </Link>
-            <Link
-              href="/references"
-              className="inline-flex items-center gap-2 rounded-md border border-background/40 px-5 py-3 text-sm font-semibold text-background transition-colors hover:bg-background/10"
-            >
-              View references
-            </Link>
+        </Prose>
+
+        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          <StatCard
+            value="17×"
+            label="Inuit are about 17 times more likely to die in a house fire, mostly because of poor and overcrowded housing."
+            source="Indigenous Watchdog (2022)"
+          />
+          <StatCard
+            value="Higher risk"
+            label="Statistics Canada links being Indigenous, and other overlapping identities, to a greater risk of unsheltered homelessness."
+            source="Statistics Canada (2022)"
+          />
+        </div>
+      </Section>
+
+      <Section className="pt-0">
+        <SectionHeading>The child welfare pipeline</SectionHeading>
+        <Prose>
+          <p>
+            Indigenous families are watched more closely by the child welfare
+            system, so their kids get taken into foster care more often. This
+            builds a pipeline: young people who age out of care are much more
+            likely to become homeless. And the fear of losing their children can
+            push families away from the help they need.
+          </p>
+        </Prose>
+
+        <Callout title="A cycle, not an accident">
+          Removal, instability, and homelessness feed into each other across
+          generations. To break the cycle, we have to change the institutions
+          that drive it, not tell families to just try harder.
+        </Callout>
+      </Section>
+
+      <Section className="pt-0">
+        <SectionHeading>Economic exclusion</SectionHeading>
+        <Prose>
+          <p>
+            Job barriers make everything worse. Indigenous skills and experience
+            are often ignored or undervalued in hiring, which limits the steady
+            income people need to keep housing.
+          </p>
+        </Prose>
+      </Section>
+
+      <Section className="pt-0">
+        <SectionHeading>A clash of value systems</SectionHeading>
+        <Prose>
+          <p>
+            Underneath these institutions is a deeper clash of values. A lot of
+            housing programs are built around settler assumptions and quietly
+            treat them as normal or universal.
+          </p>
+        </Prose>
+
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          <div className="rounded-lg border border-border bg-muted/60 p-5">
+            <h3 className="font-serif text-lg font-semibold text-foreground">
+              Settler value system
+            </h3>
+            <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted-foreground">
+              <li>Private property ownership</li>
+              <li>Individualism and self-reliance</li>
+              <li>The nuclear family as the default household</li>
+            </ul>
+          </div>
+          <div className="rounded-lg border border-accent/30 bg-accent/8 p-5">
+            <h3 className="font-serif text-lg font-semibold text-accent">
+              Many Indigenous value systems
+            </h3>
+            <ul className="mt-3 space-y-2 text-sm leading-relaxed text-foreground/90">
+              <li>Community care for the land</li>
+              <li>Reciprocity and shared responsibility</li>
+              <li>Collective and multi-generational well-being</li>
+            </ul>
           </div>
         </div>
-      </section>
 
-      {/* Framing statement */}
-      <section className="mx-auto max-w-3xl px-5 py-16 md:py-20">
-        <p className="text-sm font-semibold uppercase tracking-widest text-primary">
-          Why this matters
-        </p>
-        <p className="mt-4 font-serif text-2xl leading-snug text-foreground text-balance md:text-3xl">
-          Indigenous Peoples are only about{' '}
-          <span className="text-primary">5% of Canada&apos;s population</span>,
-          but they make up around{' '}
-          <span className="text-primary">33% of people who are homeless</span>.
-          That gap is about policy, not about people.
-        </p>
-        <p className="mt-5 text-base leading-relaxed text-muted-foreground text-pretty">
-          This site treats housing as a human right and puts Indigenous-led
-          solutions first. The goal is to move the conversation &quot;beyond the
-          street&quot; and look at the real, colonial roots of the problem.
-        </p>
-      </section>
+        <Prose>
+          <p>
+            When housing models ignore these values, they are not just a bad
+            cultural fit, they often just do not work. Solutions built around
+            community and connection to land tend to work better because they
+            actually match the people they serve.
+          </p>
+        </Prose>
+      </Section>
 
-      {/* Section navigation */}
-      <section className="mx-auto max-w-6xl px-5 pb-16">
-        <div className="grid gap-5 md:grid-cols-3">
-          {sections.map((s) => (
-            <Link
-              key={s.href}
-              href={s.href}
-              className="group flex flex-col rounded-lg border border-border bg-card p-6 transition-colors hover:border-primary"
-            >
-              <span className="font-serif text-3xl font-semibold text-primary/40 transition-colors group-hover:text-primary">
-                {s.number}
-              </span>
-              <h2 className="mt-3 font-serif text-xl font-semibold text-card-foreground">
-                {s.title}
-              </h2>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground text-pretty">
-                {s.description}
-              </p>
-              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
-                Read section
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-              </span>
-            </Link>
-          ))}
+      <Section className="pt-0">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <Link
+            href="/norms"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <ArrowLeft className="size-4" />
+            Back: Norms
+          </Link>
+          <Link
+            href="/change"
+            className="group inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90"
+          >
+            Next: Social change &amp; institutions
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+          </Link>
         </div>
-      </section>
+      </Section>
     </>
   )
 }
